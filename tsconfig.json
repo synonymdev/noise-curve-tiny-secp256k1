@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "umd",
+    "checkJs": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "types": ["node"],
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outFile": "dist/index.d.ts"
+  },
+  "include": ["src/**/*"]
+}
