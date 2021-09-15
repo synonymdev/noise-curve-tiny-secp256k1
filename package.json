@@ -1,30 +1,33 @@
 {
-  "name": "noise-curve-tiny-secp256k1",
+  "name": "noise-curve-tiny-secp",
   "version": "0.0.1",
   "description": "JS `secp256k1` elliptic curve operations for use with [`noise-handshake`](https://github.com/chm-diederichs/noise-handshake)",
-  "author": "Nazeh <ar.nazeh@gmail.com>",
-  "license": "MIT",
   "type": "module",
-  "main": "src/index.js",
-  "types": "./types/index.d.ts",
   "keywords": [
     "noise-handshake",
     "secp256k1",
     "tiny-secp256k1"
   ],
+  "homepage": "https://github.com/synonymdev/noise-curve-tiny-secp256k1#readme",
+  "bugs": {
+    "url": "https://github.com/synonymdev/noise-curve-tiny-secp256k1/issues"
+  },
+  "license": "MIT",
+  "author": "Nazeh <ar.nazeh@gmail.com>",
+  "types": "./types/index.d.ts",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/synonymdev/noise-curve-tiny-secp256k1.git"
+  },
   "scripts": {
     "lint": "standard --fix",
     "build": "rm -rf dist types && ipjs build && tsc && mv types dist/types",
     "test": "hundreds ava"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/synonymdev/noise-curve-tiny-secp256k1.git"
+  "dependencies": {
+    "tiny-secp256k1": "^1.0.0"
   },
-  "bugs": {
-    "url": "https://github.com/synonymdev/noise-curve-tiny-secp256k1/issues"
-  },
-  "homepage": "https://github.com/synonymdev/noise-curve-tiny-secp256k1#readme",
   "devDependencies": {
     "@types/node": "^16.9.1",
     "ava": "^3.15.0",
@@ -33,8 +36,5 @@
     "noise-curve-secp": "^2.0.0",
     "standard": "^16.0.3",
     "typescript": "^4.4.3"
-  },
-  "dependencies": {
-    "tiny-secp256k1": "^1.0.0"
   }
 }
