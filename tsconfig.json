@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "umd",
+    "allowJs": true,
     "checkJs": true,
     "strict": true,
     "esModuleInterop": true,
@@ -8,7 +8,7 @@
     "types": ["node"],
     "declaration": true,
     "emitDeclarationOnly": true,
-    "outFile": "dist/index.d.ts"
+    "outDir": "types"
   },
-  "include": ["src/**/*"]
+  "include": ["src"]
 }

@@ -6,14 +6,15 @@
   "license": "MIT",
   "type": "module",
   "main": "src/index.js",
+  "types": "./types/index.d.ts",
   "keywords": [
     "noise-handshake",
     "secp256k1",
     "tiny-secp256k1"
   ],
   "scripts": {
-    "lint": "standard --fix ./src/**/*.js",
-    "build": "ipjs build && tsc",
+    "lint": "standard --fix",
+    "build": "rm -rf dist types && ipjs build && tsc && mv types dist/types",
     "test": "hundreds ava"
   },
   "repository": {
