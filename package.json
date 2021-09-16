@@ -1,6 +1,6 @@
 {
   "name": "noise-curve-tiny-secp",
-  "version": "0.0.1",
+  "version": "1.1.0",
   "description": "JS `secp256k1` elliptic curve operations for use with [`noise-handshake`](https://github.com/chm-diederichs/noise-handshake)",
   "type": "module",
   "keywords": [
