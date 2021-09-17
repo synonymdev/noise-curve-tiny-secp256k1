@@ -31,12 +31,12 @@ test('dh', (t) => {
 test('throw error on invalid arguments', (t) => {
   const A = secp256k1.generateKeyPair()
   t.throws(() => secp256k1.dh(A.secretKey, A.secretKey), {
-    message: 'Invalid remote publicKey',
+    message: 'Expected Point',
     instanceOf: Error
   })
 
   t.throws(() => secp256k1.dh(A.publicKey, A.publicKey), {
-    message: 'Invalid local secretKey',
+    message: 'Expected Tweak',
     instanceOf: Error
   })
 })

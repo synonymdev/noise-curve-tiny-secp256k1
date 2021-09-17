@@ -18,8 +18,6 @@ const SKLEN = 32
  * @returns {KeyPair}
  */
 const generateKeyPair = (privKey) => {
-  if (privKey && !secp.isPrivate(privKey)) throw new Error('Invalid privkey')
-
   const secretKey = privKey || randomBytes(SKLEN)
 
   return {
@@ -33,11 +31,8 @@ const generateKeyPair = (privKey) => {
  * @param {string | Buffer} seed
  * @returns {KeyPair}
  */
-function generateSeedKeyPair (seed) {
-  const secretKey = createHash('sha256').update(seed).digest()
-
-  return generateKeyPair(secretKey)
-}
+const generateSeedKeyPair = (seed) =>
+  generateKeyPair(createHash('sha256').update(seed).digest())
 
 /**
  * Perform DH between `pk` and `lsk` and return the result.
@@ -45,12 +40,16 @@ function generateSeedKeyPair (seed) {
  * @param {Buffer} lsk Local secretKey
  * @returns {Buffer}
  */
-function dh (pk, lsk) {
-  if (!secp.isPoint(pk)) throw new Error('Invalid remote publicKey')
-  if (!secp.isPrivate(lsk)) throw new Error('Invalid local secretKey')
-
-  return createHash('sha256').update(secp.pointMultiply(pk, lsk)).digest()
-}
+const dh = (pk, lsk) =>
+  createHash('sha256')
+    // Coercing `pk` to Buffer
+    // Noise-handshake uses `buffer.subarray` on pk before passing it here.
+    // In browsers `buffer.subarray` can return a Uint8Array that isn't an
+    //  instance of `Buffer`.
+    // In `pointMultiply`, an `isPoint(pk)` will be performed which verify
+    //  `Buffer.isBuffer(pk)` which would return false and throws an error.
+    .update(secp.pointMultiply(Buffer.from(pk), lsk))
+    .digest()
 
 /**
  * @type {{
