@@ -5,7 +5,7 @@ Js `secp256k1` elliptic curve module for [`noise-handshake`](https://github.com/
 ## Usage
 
 ```js
-import { secp256k1 } from 'noise-curve-secp256k1';
+import { secp256k1 } from 'noise-curve-tiny-secp';
 import Noise from 'noise-handshake';
 
 const handshake = new Noise(pattern, initiator, staticKeyPair, {
